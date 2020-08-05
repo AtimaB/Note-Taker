@@ -1,5 +1,6 @@
 var express = require('express');
 var path = require('path');
+var fs = require('fs');
 
 var app = express();
 var PORT = 3000;
@@ -7,46 +8,35 @@ var PORT = 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-var notes = [
-  {
-    title: 'Test Title',
-    text: 'Test text',
-  },
-];
-
-// Basic route that sends the user first to the AJAX Page
-app.get('/', function (req, res) {
+//HTML Routes
+app.get('/', (req, res) => {
   res.sendfile(path.join(__dirname, 'index.html'));
 });
 
-app.get('/notes', function (re1, res) {
+app.get('/notes', (re1, res) => {
   res.sendfile(path.join(__dirname, 'notes.html'));
 });
 
-app.get('/api/notes', function (req, res) {
-  return res.json(notes);
+//Api Routes
+app.get('/api/notes', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../db/db.json'));
 });
 
-app.get('/api/notes/:note', function (req, res) {
-  var note = req.params.notes;
-
-  console.log(note);
-
-  for (var i = 0; i < notes.length; i++) {
-    if (note === notes[i].routeName) {
-      return res.json(notes[i]);
-    }
-  }
-  return res.json(false);
-});
-
-//Create new note
-app.post('/api/public/notes', function (req, res) {
-  var newNote = req.body;
-  newNote.push(newNote);
+//Create notes
+app.post('/api/notes', (req, res) => {
+  let newNote = {
+    title: 'Test Title',
+    text: 'Test text',
+    id: 'id',
+  };
+  let notes = fs.readFileSync('../../db/db.json');
+  let parsedNote = JSON.parse(notes);
+  parsedNote.push(newNote);
+  fs.writeFileSync('../../db/db.json', JSON.stringify(parsedNote));
   res.json(newNote);
 });
 
+// Starts the server to begin listening
 app.listen(PORT, function () {
-  console.log('App listining on PORT' + PORT);
+  console.log('App listining on PORT ' + PORT);
 });

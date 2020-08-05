@@ -1,1 +1,19 @@
-[{"title":"Test Title","text":"Test text"}]
+[
+  { "title": "Test Title", "text": "Test text" },
+
+  {
+    "title": "clean the living room",
+    "text": "after breakfast, clean the living room.",
+    "id": "1"
+  },
+  {
+    "title": "water park",
+    "text": "take the girls to water park at 10am.",
+    "id": "2"
+  },
+  {
+    "title": "homework",
+    "text": "work on the latest homework while the kids naping!",
+    "id": "3"
+  }
+]
