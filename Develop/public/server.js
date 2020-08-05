@@ -3,7 +3,7 @@ var path = require('path');
 var fs = require('fs');
 
 var app = express();
-var PORT = 3000;
+const PORT = process.env.PORT || 8080;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -17,9 +17,19 @@ app.get('/notes', (re1, res) => {
   res.sendfile(path.join(__dirname, 'notes.html'));
 });
 
+//CSS Routes
+app.get('/assets/css/styles.css', (req, res) => {
+  res.sendfile(path.join(__dirname, '/assets/css/styles.css'));
+});
+
+//JS Routes
+app.get('/assets/js/index.js', (req, res) => {
+  res.sendfile(path.join(__dirname, '/assets/js/index.js'));
+});
+
 //Api Routes
 app.get('/api/notes', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../db/db.json'));
+  res.sendFile(path.join(__dirname, '/db/db.json'));
 });
 
 //Create notes
@@ -29,11 +39,28 @@ app.post('/api/notes', (req, res) => {
     text: 'Test text',
     id: 'id',
   };
-  let notes = fs.readFileSync('../../db/db.json');
+  let notes = fs.readFileSync('/db/db.json');
   let parsedNote = JSON.parse(notes);
   parsedNote.push(newNote);
-  fs.writeFileSync('../../db/db.json', JSON.stringify(parsedNote));
+  fs.writeFileSync('/db/db.json', JSON.stringify(parsedNote));
   res.json(newNote);
+});
+
+// Delete notes
+app.delete('/api/notes/:id', (req, res) => {
+  var id = req.param('id');
+  newNote.remove(
+    {
+      _id: id,
+    },
+    function (err) {
+      if (err) {
+        console.log(err);
+      } else {
+        return res.send('Removed');
+      }
+    }
+  );
 });
 
 // Starts the server to begin listening
