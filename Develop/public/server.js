@@ -29,38 +29,43 @@ app.get('/assets/js/index.js', (req, res) => {
 
 //Api Routes
 app.get('/api/notes', (req, res) => {
-  res.sendFile(path.join(__dirname, '/db/db.json'));
+  res.sendFile(path.join(__dirname, './db/db.json'));
 });
+
+// app.get('/api/notes/:id', (req, res) => {
+//   res.sendFile(path.join(__dirname, './db/db.json'));
+// });
 
 //Create notes
 app.post('/api/notes', (req, res) => {
   let newNote = {
-    title: 'Test Title',
-    text: 'Test text',
+    title: req.body.title,
+    text: req.body.text,
     id: 'id',
   };
-  let notes = fs.readFileSync('/db/db.json');
+  let notes = fs.readFileSync('./db/db.json');
   let parsedNote = JSON.parse(notes);
   parsedNote.push(newNote);
-  fs.writeFileSync('/db/db.json', JSON.stringify(parsedNote));
+  fs.writeFileSync('./db/db.json', JSON.stringify(parsedNote));
   res.json(newNote);
 });
 
 // Delete notes
 app.delete('/api/notes/:id', (req, res) => {
-  var id = req.param('id');
-  newNote.remove(
-    {
-      _id: id,
-    },
-    function (err) {
-      if (err) {
-        console.log(err);
-      } else {
-        return res.send('Removed');
+  let id = req.params.id;
+
+  fs.readFile('./db/db.json', 'utf-8', (err, notesDetail) => {
+    let note = JSON.parse(notesDetail);
+    let newNotesDetail = note.filter((note) => note.id != id);
+    fs.writeFile(
+      './db/db.json',
+      JSON.stringify(newNotesDetail, null, 2),
+      (err) => {
+        if (err) throw err;
+        res.send(newNotesDetail);
       }
-    }
-  );
+    );
+  });
 });
 
 // Starts the server to begin listening
