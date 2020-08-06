@@ -27,3 +27,5 @@ This application is allowed the user to create the notes, save, view previously 
 - [How to Generate Unique ID in JavaScript](https://dev.to/rahmanfadhil/how-to-generate-unique-id-in-javascript-1b13)
 
 ## Test
+
+![Note Taker](./Assets/note.gif)
