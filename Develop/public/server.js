@@ -37,9 +37,8 @@ app.post('/api/notes', (req, res) => {
   let newNote = {
     title: req.body.title,
     text: req.body.text,
-    // id: req.body.id,
   };
-  //Create nuique ID
+  //Create unique ID
   newNote.id = Math.floor(Math.random() * Date.now());
 
   let notes = fs.readFileSync('./db/db.json');
