@@ -32,17 +32,16 @@ app.get('/api/notes', (req, res) => {
   res.sendFile(path.join(__dirname, './db/db.json'));
 });
 
-// app.get('/api/notes/:id', (req, res) => {
-//   res.sendFile(path.join(__dirname, './db/db.json'));
-// });
-
 //Create notes
 app.post('/api/notes', (req, res) => {
   let newNote = {
     title: req.body.title,
     text: req.body.text,
-    id: 'id',
+    // id: req.body.id,
   };
+  //Create nuique ID
+  newNote.id = Math.floor(Math.random() * Date.now());
+
   let notes = fs.readFileSync('./db/db.json');
   let parsedNote = JSON.parse(notes);
   parsedNote.push(newNote);
