@@ -9,7 +9,6 @@ This project I create an application that can be used to write, save, and delete
 ## Table of Contents
 
 - [Instructions](#instructions)
-- [Installation](#installation)
 - [Resources](#resources)
 - [Tests](#tests)
 
