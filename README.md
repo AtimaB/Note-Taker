@@ -1,59 +1,30 @@
-# Unit 11 Express Homework: Note Taker
+![](https://img.shields.io/github/followers/AtimaB?style=social)
+
+# Note Taker
 
 ## Description
 
-Create an application that can be used to write, save, and delete notes. This application will use an express backend and save and retrieve note data from a JSON file.
+This project I create an application that can be used to write, save, and delete notes by using an express backend and save and retrieve note data from a JSON file.
 
-- The application frontend has already been created, it's your job to build the backend and connect the two.
+## Table of Contents
 
-- The following HTML routes should be created:
+- [Instructions](#instructions)
+- [Installation](#installation)
+- [Resources](#resources)
+- [Tests](#tests)
 
-  - GET `/notes` - Should return the `notes.html` file.
+## Instructions
 
-  - GET `*` - Should return the `index.html` file
-
-- The application should have a `db.json` file on the backend that will be used to store and retrieve notes using the `fs` module.
-
-- The following API routes should be created:
-
-  - GET `/api/notes` - Should read the `db.json` file and return all saved notes as JSON.
-
-  - POST `/api/notes` - Should receive a new note to save on the request body, add it to the `db.json` file, and then return the new note to the client.
-
-  - DELETE `/api/notes/:id` - Should receive a query parameter containing the id of a note to delete. This means you'll need to find a way to give each note a unique `id` when it's saved. In order to delete a note, you'll need to read all notes from the `db.json` file, remove the note with the given `id` property, and then rewrite the notes to the `db.json` file.
-
-## User Story
-
-AS A user, I want to be able to write and save notes
-
-I WANT to be able to delete notes I've written before
-
-SO THAT I can organize my thoughts and keep track of tasks I need to complete
-
-## Business Context
-
-For users that need to keep track of a lot of information, it's easy to forget or be unable to recall something important. Being able to take persistent notes allows users to have written information available when needed.
-
-## Acceptance Criteria
-
-Application should allow users to create and save notes.
-
-Application should allow users to view previously saved notes.
-
-Application should allow users to delete previously saved notes.
-
-## Deploying the App
-
-You will not be able to deploy your server side code on GitHub pages. This app should be deployed on Heroku. Carefully follow the [Heroku Guide](../04-Supplemental/HerokuGuide.md) for getting your app deployed on Heroku.
+This application is allowed the user to create the notes, save, view previously saved notes and delete previously saved notes.
 
 ## Resources
 
-https://www.digitalocean.com/community/tutorials/nodejs-serving-static-files-in-express#:~:text=static%20middleware.-,express.,in%20our%20case%20it's%20public%20.
+- [NodeJS-express-ajax-restapi](https://github.com/MarkFicht/NodeJS-express-ajax-restapi)
 
-https://github.com/MarkFicht/NodeJS-express-ajax-restapi
+- [Create a Fake REST API with JSON-Server](https://youtu.be/1zkgdLZEdwM)
 
-https://youtu.be/1zkgdLZEdwM
+- [Use app.delete 'express.js' to delete collections in a mongo database](https://stackoverflow.com/questions/27823367/use-app-delete-express-js-to-delete-collections-in-a-mongo-database)
 
-https://stackoverflow.com/questions/27823367/use-app-delete-express-js-to-delete-collections-in-a-mongo-database
+- [How to Generate Unique ID in JavaScript](https://dev.to/rahmanfadhil/how-to-generate-unique-id-in-javascript-1b13)
 
-[create random ID]https://dev.to/rahmanfadhil/how-to-generate-unique-id-in-javascript-1b13
+## Test
