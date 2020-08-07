@@ -10,26 +10,26 @@ app.use(express.json());
 
 //HTML Routes
 app.get('/', (req, res) => {
-  res.sendfile(path.join(__dirname, 'index.html'));
+  res.sendfile(path.join(__dirname, './Develop/public/index.html'));
 });
 
 app.get('/notes', (re1, res) => {
-  res.sendfile(path.join(__dirname, 'notes.html'));
+  res.sendfile(path.join(__dirname, './Develop/public/notes.html'));
 });
 
 //CSS Routes
 app.get('/assets/css/styles.css', (req, res) => {
-  res.sendfile(path.join(__dirname, '/assets/css/styles.css'));
+  res.sendfile(path.join(__dirname, './Develop/public/assets/css/styles.css'));
 });
 
 //JS Routes
 app.get('/assets/js/index.js', (req, res) => {
-  res.sendfile(path.join(__dirname, '/assets/js/index.js'));
+  res.sendfile(path.join(__dirname, './Develop/public/assets/js/index.js'));
 });
 
 //Api Routes
 app.get('/api/notes', (req, res) => {
-  res.sendFile(path.join(__dirname, '../db/db.json'));
+  res.sendFile(path.join(__dirname, './Develop/db/db.json'));
 });
 
 //Create notes
@@ -41,10 +41,10 @@ app.post('/api/notes', (req, res) => {
   //Create unique ID
   newNote.id = Math.floor(Math.random() * Date.now());
 
-  let notes = fs.readFileSync('../db/db.json');
+  let notes = fs.readFileSync('./Develop/db/db.json');
   let parsedNote = JSON.parse(notes);
   parsedNote.push(newNote);
-  fs.writeFileSync('../db/db.json', JSON.stringify(parsedNote));
+  fs.writeFileSync('./Develop/db/db.json', JSON.stringify(parsedNote));
   res.json(newNote);
 });
 
@@ -52,11 +52,11 @@ app.post('/api/notes', (req, res) => {
 app.delete('/api/notes/:id', (req, res) => {
   let id = req.params.id;
 
-  fs.readFile('../db/db.json', 'utf-8', (err, notesDetail) => {
+  fs.readFile('./Develop/db/db.json', 'utf-8', (err, notesDetail) => {
     let note = JSON.parse(notesDetail);
     let newNotesDetail = note.filter((note) => note.id != id);
     fs.writeFile(
-      '../db/db.json',
+      './Develop/db/db.json',
       JSON.stringify(newNotesDetail, null, 2),
       (err) => {
         if (err) throw err;
