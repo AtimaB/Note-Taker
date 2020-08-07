@@ -30,4 +30,4 @@ This application is allowed the user to create the notes, save, view previously 
 
 ![Note Taker](./Assets/note.gif)
 
-#### [Click here for deployed link!](https://note-note-taker.herokuapp.com/)
+### [Click here for deployed link!](https://note-note-taker.herokuapp.com/)
