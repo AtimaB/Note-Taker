@@ -26,8 +26,10 @@ This application is allowed the user to create the notes, save, view previously 
 
 - [How to Generate Unique ID in JavaScript](https://dev.to/rahmanfadhil/how-to-generate-unique-id-in-javascript-1b13)
 
+## Link
+
+#### [Click here for deployed link!](https://note-note-taker.herokuapp.com/)
+
 ## Test
 
 ![Note Taker](./Assets/note.gif)
-
-### [Click here for deployed link!](https://note-note-taker.herokuapp.com/)
