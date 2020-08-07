@@ -1,8 +1,8 @@
-var express = require('express');
-var path = require('path');
-var fs = require('fs');
+const express = require('express');
+const path = require('path');
+const fs = require('fs');
 
-var app = express();
+const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(express.urlencoded({ extended: true }));
