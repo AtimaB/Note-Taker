@@ -10,7 +10,7 @@ This project I create an application that can be used to write, save, and delete
 
 - [Instructions](#instructions)
 - [Resources](#resources)
-- [Tests](#tests)
+- [Test](#test)
 
 ## Instructions
 
